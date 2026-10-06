@@ -71,8 +71,8 @@ catalog:
   "@octanejs/vite-plugin": "0.1.22"
   "@octokit/rest": "^22.0.1"
   "@octokit/webhooks": "^14.2.0"
-  "@opennextjs/aws": "4.1.0"
-  "@opennextjs/cloudflare": "1.20.1"
+  "@opennextjs/aws": "4.1.8"
+  "@opennextjs/cloudflare": "1.20.8"
   "@opentui/core": "latest"
   "@oxc-project/types": "^0.146.0"
   "@playwright/test": "^1.61.1"
@@ -80,10 +80,6 @@ catalog:
   "@prisma/orm-postgres": "8.0.0-rc.11"
   prisma: "8.0.0-rc.15"
   arktype: "2.2.3"
-  "@prisma-next/cli": "^0.8.0"
-  "@prisma-next/postgres": "^0.8.0"
-  "@prisma-next/target-postgres": "^0.8.0"
-  "@prisma-next/vite-plugin-contract-emit": "^0.8.0"
   "@prisma/dev": "^0.20.0"
   "@puppeteer/browsers": "^3.2.0"
   "@react-router/dev": "^7.16.0"
@@ -132,7 +128,7 @@ catalog:
   better-auth: "^1.7.5"
   capnp-es: "^0.0.16"
   capnweb: "^0.12.0"
-  changelogithub: "^13.16.1"
+  changelogithub: "^15.0.5"
   chokidar: "^5.0.0"
   cookie: "^2.0.1"
   cuelume: "^0.2.2"
@@ -161,7 +157,7 @@ catalog:
   miniflare: "^4.20260701.0"
   mongodb: "^6.10.0"
   mysql2: "^3.24.2"
-  next: "16.2.10"
+  next: "16.3.8"
   nitro: "^3.0.260415-beta"
   nitropack: "2.13.4"
   npm-run-all2: "^8.0.4"
@@ -195,7 +191,7 @@ catalog:
   takumi-js: "^2.13.5"
   termcut: "1.4.2"
   toucan-js: "4.0.0"
-  tsdown: "^0.22.4"
+  tsdown: "^0.23.0"
   tsx: "^4.20.6"
   turbo: "^2.9.16"
   typescript: "^7.0.2"
@@ -213,7 +209,7 @@ catalog:
   vue-tsc: "^3.2.6"
   waku: "1.0.0-beta.7"
   workerd: "1.20261002.1"
-  wrangler: "^4.103.0"
+  wrangler: "^4.145.0"
   ws: "^8.21.0"
   yaml: "^2.9.0"
   yauzl: "^3.4.0"
@@ -261,6 +257,43 @@ overrides:
   mysql2: 3.24.2
   zod: 4.5.4
   rolldown: 1.2.5
+  # Upstream deps still pin deprecated majors; the replacements are API
+  # compatible for the call sites they use.
+  "archiver-utils>glob": ^13.0.6
+  "@node-minify/core>glob": ^13.0.6
+  "changelogen>c12": ^3.3.4
+  "formdata-node>node-domexception": npm:@nolyfill/domexception@^1.0.28
+  # yuku-* are pure JS since 0.14; older versions pull deprecated native bindings.
+  yuku-ast: ^0.17.0
+  yuku-codegen: ^0.17.0
+  yuku-parser: ^0.17.0
+
+# Deprecated packages pulled in by the latest upstream releases, with no
+# non-deprecated replacement available.
+allowedDeprecatedVersions:
+  # @neondatabase/auth -> @daveyplate/better-auth-ui
+  "@react-email/body": "*"
+  "@react-email/button": "*"
+  "@react-email/code-block": "*"
+  "@react-email/code-inline": "*"
+  "@react-email/column": "*"
+  "@react-email/components": "*"
+  "@react-email/container": "*"
+  "@react-email/font": "*"
+  "@react-email/head": "*"
+  "@react-email/heading": "*"
+  "@react-email/hr": "*"
+  "@react-email/html": "*"
+  "@react-email/img": "*"
+  "@react-email/link": "*"
+  "@react-email/markdown": "*"
+  "@react-email/preview": "*"
+  "@react-email/row": "*"
+  "@react-email/section": "*"
+  "@react-email/tailwind": "*"
+  "@react-email/text": "*"
+  # vocs -> @codesandbox/sandpack-react -> @react-hook/intersection-observer
+  intersection-observer: "*"
 
 patchedDependencies:
   "@astrojs/starlight@0.42.0": patches/@astrojs%2Fstarlight@0.42.0.patch
