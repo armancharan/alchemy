@@ -17,6 +17,7 @@ import { SendEmail } from "../Email/SendEmail.ts";
 import type { App as FlagshipApp } from "../Flagship/App.ts";
 import type { Connection as Hyperdrive } from "../Hyperdrive/Connection.ts";
 import type { ImagesBinding } from "../Images/ImagesBinding.ts";
+import type { InstantNamespace } from "../KV/InstantNamespace.ts";
 import type { Namespace } from "../KV/Namespace.ts";
 import type { LegacyPipeline } from "../Pipelines/LegacyPipeline.ts";
 import type { Stream as PipelinesStream } from "../Pipelines/Stream.ts";
@@ -198,6 +199,7 @@ export type WorkerBindingResource =
   | S3Credentials
   | D1Database
   | Namespace
+  | InstantNamespace
   | Queue
   | AiGateway
   | AIBinding

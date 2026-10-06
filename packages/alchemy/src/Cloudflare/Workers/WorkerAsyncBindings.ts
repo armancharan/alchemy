@@ -25,6 +25,7 @@ import { isApp } from "../Flagship/App.ts";
 import { getHyperdriveDevOrigin } from "../Hyperdrive/ConnectBinding.ts";
 import { isHyperdriveConnection } from "../Hyperdrive/Connection.ts";
 import { isImages } from "../Images/Images.ts";
+import { isInstantNamespace } from "../KV/InstantNamespace.ts";
 import { isNamespace as isKVNamespace } from "../KV/Namespace.ts";
 import { isLegacyPipeline } from "../Pipelines/LegacyPipeline.ts";
 import { isStream as isPipelinesStream } from "../Pipelines/Stream.ts";
@@ -539,7 +540,7 @@ const toBinding = (
         Output.map((jurisdiction) => (jurisdiction === "default" ? undefined : jurisdiction)),
       ),
     };
-  } else if (isKVNamespace(binding)) {
+  } else if (isKVNamespace(binding) || isInstantNamespace(binding)) {
     return {
       type: "kv_namespace",
       name: bindingName,
